@@ -1,0 +1,21 @@
+.container {
+    background-image: url(../../assets/img/surgeons-interacting-with-each-other.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p-password .p-password {
+        width: 100%;
+        input {
+            width: 100%;
+        }
+    }
+
+    p-dropdown .p-dropdown {
+        width: 100%;
+    }
+}

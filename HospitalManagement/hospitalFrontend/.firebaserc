@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "hospital": "hospital-1999",
+    "default": "hospital-1999"
+  },
+  "targets": {},
+  "etags": {}
+}

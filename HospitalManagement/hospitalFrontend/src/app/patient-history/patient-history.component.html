@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h1>Patient History</h1>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="row justify-content-around">
+            <div class="col-lg-4">
+                <h2>Deseases Are</h2>
+                <div *ngFor="let patient of patientData">
+                    <ul *ngFor="let desease of patient.deseaseDetails">
+                        <li *ngIf='desease != null'>{{desease}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h2>
+                    Medicines Prescribes
+                </h2>
+                <div *ngFor="let patient of patientData">
+                    <ul *ngFor="let madicine of patient.madicines">
+                        <li *ngIf='madicine != null'>{{madicine}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h2>
+                    Checkup Date
+                </h2>
+                <div *ngFor="let patient of patientData">
+                    <ul *ngFor="let date of patient.dates">
+                        <li *ngIf='date != null'>{{date}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

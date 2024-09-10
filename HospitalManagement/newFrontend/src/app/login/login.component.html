@@ -1,0 +1,32 @@
+<div class="container flex justify-content-center align-items-center h-screen">
+    <div class="flex justify-content-center align-items-center md:w-9 lg:w-6 w-11 flex-column">
+        <div class="loginLogo flex justify-content-center align-items-center">
+            <h1>Log In</h1>
+        </div>
+        <div class="formSection flex justify-content-center align-items-center w-9">
+            <form [formGroup]="loginForm" class="flex justify-content-center align-items-center flex-column w-full" (ngSubmit)=onSubmit()>
+                <div class="emailCont w-full h-3rem  mt-5">
+                    <span class="p-float-label h-full">
+                        <input class="w-full h-full" pInputText id="email" formControlName="email" />
+                        <label for="email">Email</label>
+                    </span>
+                </div>
+
+                <div class="passCont w-full h-3rem mt-5">
+                    <span class="p-float-label h-full">
+                        <p-password [feedback]="false" [toggleMask]="true" formControlName="password"></p-password>
+                        <label for="password">Password</label>
+                    </span>
+                </div>
+
+                <div class="typeCont w-full h-3rem mt-5">
+                    <p-dropdown [options]="userTypes" formControlName="userType" optionLabel="label" [showClear]="true" placeholder="Select User Type" (onChange)="dropDownValueChange($event)"></p-dropdown>
+                </div>
+
+                <div class="loginButton mt-5">
+                    <p-button type="Submit" label="Submit" [raised]="true" [disabled]="false"></p-button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

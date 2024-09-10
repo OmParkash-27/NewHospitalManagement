@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <mat-card>
+        <div class="d-flex justify-content-center align-items-center mat-card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <mat-card-title>Doctor Dashboard</mat-card-title>
+                <button style="margin: 30px; position: absolute; right: 0;" type="button" class="btn btn-warning" (click)="logout()">Log Out</button>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="d-flex justify-content-between">
+                <div class="section">
+                    <!-- <app-patient-list></app-patient-list> -->
+                    <mat-toolbar color="accent" style="text-wrap: wrap; min-height: 65px;">
+                        <!-- <i style="display: inline-block; color: rgb(247, 3, 3); margin: 20px; font-size: 32px;" class="fa fa-plus" title="Hospital"></i> -->
+                        <span style="color: rgb(55, 0, 143); font-size: 34px;">Today and Future Patients List</span>
+                        <span class="example-spacer"></span>
+                    </mat-toolbar>
+                    <mat-card class="patientMatCard" style="overflow: auto;">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Mobile</th>
+                                    <th scope="col">Desease</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Appointment</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of displayedItems; let i = index">
+                                    <ng-container *ngIf="item['curFutAppointment'] != null">
+                                        <td>{{item['name']}}</td>
+                                        <td>{{item['gender']}}</td>
+                                        <td>{{item['mobile']}}</td>
+                                        <td>{{item['desease']}}</td>
+                                        <td>{{item['age']}}</td>
+                                        <td>
+                                            <span>{{item['curFutAppointment'] | date: 'dd/MM/YYYY'}}</span>
+                                        </td>
+                                        <td class="px-4">
+                                            <i role="button"
+                                                style="display: inline-block; color: rgb(6, 111, 11); margin-left: 20px;"
+                                                (click)="openHistoryModal(item['_id'])" class="fa fa-history"
+                                                title="history"></i>
+                                            <!-- <i role="button" style="display: inline-block; color: blue; margin-left: 20px;" (click)="openAddNewEntryModal(item['_id'])" class="fa fa-plus" title="new entry"></i> -->
+                                        </td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+                        <div class="mat-paginator">
+                            <!-- <button mat-raised-button color="accent" (click)="ngOnInit()">Back</button> -->
+                            <mat-paginator [length]="data.length" [pageSize]="5" aria-label="Select page"
+                                (page)="onPageChange($event)">
+                            </mat-paginator>
+                        </div>
+                    </mat-card>
+                </div>
+    
+                <div class="section">
+                    <mat-card>
+                        <div class="headerChart">
+                            <p>Patients Graph</p>
+                        </div>
+                        <!-- <app-bar-chart></app-bar-chart> -->
+                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                            [legend]="barChartLegend" chartType="bar">
+                        </canvas>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+    </mat-card>
+</div>

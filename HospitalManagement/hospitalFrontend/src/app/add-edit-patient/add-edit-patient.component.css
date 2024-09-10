@@ -1,0 +1,27 @@
+mat-card-header {
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+h1 {
+    font-size: 40px;
+    font-weight: 600;
+}
+.row {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+
+.buttonBox {
+    display: flex;
+    justify-content: center;
+    margin-right: 80px;
+    padding: 20px;
+}
+button {
+    margin-right: 50px;
+    width: 100px;
+}

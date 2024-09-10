@@ -1,0 +1,68 @@
+.container-fluid {
+    height: 80vh !important;
+    max-width: 1400px;
+}
+mat-card {
+    height: 100%;
+}
+
+.row {
+    height: 100%;
+    margin: 10px;
+    /* height: 65vh; */
+    box-sizing: border-box;
+    /* background-color: rgb(135, 135, 199); */
+}
+
+.section {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+}
+
+mat-card.patientMatCard {
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.mat-card-header {
+    height: 80px;
+    min-width: 100%;
+    background-color: rgb(129, 0, 161);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.mat-card-header > div {
+    max-width: 90%;
+}
+
+mat-card-title {
+    font-size: 48px;
+    color: rgb(184, 171, 250);
+    font-weight: 700;
+}
+
+.headerChart {
+    width: 100%;
+    height: 65px;
+    background-color: rgb(76, 76, 179);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+p {
+    font-size: 34px;
+    font-weight: 500;
+    color:rgb(255, 14, 14);
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  

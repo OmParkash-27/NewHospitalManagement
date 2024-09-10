@@ -1,0 +1,136 @@
+<div class="container justify-content-center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h1>{{title}} Patient</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #patientForm="ngForm" class="row" (ngSubmit)="patientForm.valid && onSubmit()">
+        <div class="col-lg-4">
+          <label for="">Name</label><br>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput type="text" name="name" [(ngModel)]="formObj.name" #name="ngModel" required>
+            <mat-error style="color: red; display:block" *ngIf="name?.hasError('required') && (name.touched  || patientForm.submitted)">
+              Name is required!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+          <label for="">Age</label><br>
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput type="text" name="age" [(ngModel)]="formObj.age" #age="ngModel">
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-4">
+          <label for="">Mobile</label><br>
+          <mat-form-field>
+            <mat-label>Mobile</mat-label>
+            <input matInput type="tel" name="mobile" [(ngModel)]="formObj.mobile" #mobile="ngModel" required>
+            <mat-error style="color: red; display:block" *ngIf="mobile?.hasError('required') && (mobile.touched  || patientForm.submitted)">
+              Mobile is required!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+          <label for="">Desease</label><br>
+          <mat-form-field>
+            <mat-label>Desease</mat-label>
+            <input matInput type="text" name="desease" [(ngModel)]="formObj.desease" #desease="ngModel" required>
+            <mat-error style="color: red; display:block" *ngIf="desease?.hasError('required') && (desease.touched  || patientForm.submitted)">
+              Desease is required!
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="form-check form-check-inline">
+            <label>Gender</label><br><br>
+            <input class="form-check-input" type="radio" name="gender" [(ngModel)]="formObj.gender" #gender="ngModel"
+              value="male">
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" [(ngModel)]="formObj.gender" #gender="ngModel"
+              value="female">
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" [(ngModel)]="formObj.gender" #gender="ngModel"
+              value="other">
+            <label class="form-check-label" for="other">Other</label>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <mat-form-field>
+            <mat-label>Doctor</mat-label>
+            <mat-select name="d_id" [(ngModel)]="formObj.d_id" #d_id="ngModel">
+              <mat-option aria-disabled="true">Choose</mat-option>
+              <mat-option *ngFor="let doctor of doctors" [value]="doctor._id">
+                {{doctor.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-4">
+          <label for="">Madicines</label><br>
+          <mat-form-field class="">
+            <mat-label>Enter Medicines</mat-label>
+            <textarea matInput name="madicines" [(ngModel)]="formObj.madicines" #madicines="ngModel" rows="1" cols="40" placeholder="Madicines..."></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+          <label for="">Desease Details</label><br>
+          <mat-form-field class="">
+            <mat-label>Enter Deseases</mat-label>
+            <textarea matInput name="deseaseDetails" [(ngModel)]="formObj.deseaseDetails" #deseaseDetails="ngModel" rows="1" cols="40" placeholder="Madicines..."></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-4">
+          <label for="">Address</label><br>
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <textarea matInput name="address" [(ngModel)]="formObj.address" #address="ngModel" rows="1" cols="40" placeholder="Address..."></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-5">
+          <label class="col-form-label">Current Date</label><br>
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput type="" name="dates" [(ngModel)]="formObj.dates" #dates="ngModel" required
+              [matDatepicker]="picker" >
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error style="color: red; display:block" *ngIf="dates?.hasError('required') && (dates.touched  || patientForm.submitted)">
+              Date is required!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="col-lg-5">
+          <label class="col-form-label">Appointment Date</label><br>
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput type="" name="appointment" [(ngModel)]="formObj.appointment" #appointment="ngModel" 
+              [matDatepicker]="apppicker">
+            <mat-datepicker-toggle matIconSuffix [for]="apppicker"></mat-datepicker-toggle>
+            <mat-datepicker #apppicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-12 buttonBox">
+          <button mat-raised-button color="accent" (click)="BackToList()">Back</button> &nbsp; &nbsp;
+          <button *ngIf="patientId == undefined || (patientId != undefined && status != undefined)" type="submit" mat-raised-button color="warn">Save</button>
+          <button *ngIf="patientId != undefined && status == null " type="submit" mat-raised-button color="warn">Update</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

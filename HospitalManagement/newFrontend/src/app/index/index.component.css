@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    bottom: 0;
+    box-sizing: border-box;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background-color: #ededed;
+}
+.linearGraSecCon {
+    height: 370px;
+}
+.linearGraSecCon .linearGraSec {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../assets/img/hospitalBed.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.footer, .header {
+    background-color: #e1dede;
+}

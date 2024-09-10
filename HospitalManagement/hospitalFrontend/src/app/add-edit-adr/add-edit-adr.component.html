@@ -1,0 +1,107 @@
+<div class="container justify-content-center">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                <h1>{{title}} ADR</h1>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form #adrForm="ngForm" class="row justify-content-around" (ngSubmit)="adrForm.valid && onSubmit()">
+                <div class="col-lg-5">
+                    <label for="">Name</label><br>
+                    <mat-form-field class="controlWidth">
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" name="name" [(ngModel)]="formObj.name" #name="ngModel" required>
+                        <mat-error style="color: red; display:block" *ngIf="name?.hasError('required') && (name.touched  || adrForm.submitted)">
+                            Name is required!
+                          </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-5">
+                    <label for="">Mobile</label><br>
+                    <mat-form-field class="controlWidth">
+                        <mat-label>Mobile</mat-label>
+                        <input matInput type="tel" name="mobile" [(ngModel)]="formObj.mobile" #mobile="ngModel"
+                            required>
+                            <mat-error style="color: red; display:block" *ngIf="mobile?.hasError('required') && (mobile.touched  || adrForm.submitted)">
+                                Mobile is required!
+                              </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="form-check form-check-inline">
+                        <label>Gender</label><br><br>
+                        <input class="form-check-input" type="radio" name="gender" [(ngModel)]="formObj.gender"
+                            #gender="ngModel" value="male">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" [(ngModel)]="formObj.gender"
+                            #gender="ngModel" value="female">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" [(ngModel)]="formObj.gender"
+                            #gender="ngModel" value="other">
+                        <label class="form-check-label" for="other">Other</label>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <label for="">User Type</label><br>
+                    <mat-form-field class="controlWidth">
+                        <mat-label>User Type</mat-label>
+                        <mat-select name="userType" [(ngModel)]="formObj.userType" #userType="ngModel" required>
+                            <mat-option aria-disabled="true">Choose</mat-option>
+                            <mat-option *ngFor="let doctor of users" [value]="doctor.name">
+                                {{doctor.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error style="color: red; display:block" *ngIf="userType?.hasError('required') && (userType.touched  || adrForm.submitted)">
+                            User Type is required!
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-5">
+                    <label for="">Email</label><br>
+                    <mat-form-field class="controlWidth">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" name="email" [(ngModel)]="formObj.email" #email="ngModel" required>
+                        <mat-error style="color: red; display:block" *ngIf="email?.hasError('required') && (email.touched  || adrForm.submitted)">
+                            Email is required!
+                          </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-5">
+                    <label for="">Password</label><br>
+                    <mat-form-field class="controlWidth">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" name="password" [(ngModel)]="formObj.password" #password="ngModel"
+                            required>
+                            <mat-error style="color: red; display:block" *ngIf="password?.hasError('required') && (password.touched  || adrForm.submitted)">
+                                Password is required!
+                              </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-8">
+                    <label for="">Speciality</label><br>
+                    <mat-form-field class="controlWidth">
+                      <mat-label>Enter Speciality</mat-label>
+                      <textarea matInput name="speciality" [(ngModel)]="formObj.speciality" #speciality="ngModel" rows="1" cols="40" placeholder="speciality..."></textarea>
+                    </mat-form-field>
+                  </div>
+
+                <div class="col-lg-12 buttonBox">
+                    <button mat-raised-button color="accent" (click)="BackToList()">Back</button> &nbsp; &nbsp;
+                    <button *ngIf="userId == undefined" type="submit" mat-raised-button color="warn">Save</button>
+                    <button  *ngIf="userId != undefined" type="submit" mat-raised-button color="warn">Update</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

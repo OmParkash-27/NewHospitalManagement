@@ -1,0 +1,57 @@
+ <div class="container">
+    <div class="row justify-content-center">
+        <div class="example-form align-self-center">
+            <h1>Log In</h1>
+            <form #loginForm="ngForm"  (ngSubmit)="loginForm.valid && onSubmit()">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input type="email" name="email" matInput [(ngModel)]="loginFormObj.email" #email="ngModel" 
+                        placeholder="Ex. pat@example.com" autocomplete="off" required appIsEamil>
+                        <div *ngIf="email.invalid">
+                            <mat-error style="color: red; display:block" *ngIf="email?.hasError('required') && (email.touched  || loginForm.submitted)">
+                                Email is required!
+                            </mat-error>
+                           <mat-error style="color: red; display:block" *ngIf="email.errors?.['invalidEmail'] && loginForm.submitted">
+                            Please enter a valid email address
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+    
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input type="password" name="password" matInput [(ngModel)]="loginFormObj.password" #password="ngModel"
+                        required autocomplete="off" min="3">
+                        <div *ngIf="password.invalid">
+                            <mat-error style="color: red; display:block" *ngIf="password?.hasError('required') && (password.touched  || loginForm.submitted)">
+                                Password is required!
+                            </mat-error>
+                           <mat-error style="color: red; display:block" *ngIf="password.errors?.['min'] && loginForm.submitted">
+                            Please enter a valid Password
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+    
+                <mat-form-field class="example-full-width">
+                    <mat-label>User Type</mat-label>
+                    <mat-select name="userType" [(ngModel)]="loginFormObj.userType" #userType="ngModel" required>
+                      <mat-option aria-disabled="true">Chose Type</mat-option>
+                      <mat-option *ngFor="let user of userTypes" [value]="user.name">
+                        {{user.name | uppercase}}
+                      </mat-option>
+                    </mat-select>
+                    <div *ngIf="userType.invalid">
+                        <mat-error style="color: red; display:block" *ngIf="userType.hasError('required') && (userType.touched  || loginForm.submitted)">
+                            User Type is required!
+                        </mat-error>
+                    </div>
+                  </mat-form-field>
+                  <div class="buttons">
+                    <button matTooltip="Login" matTooltipPosition="right" mat-raised-button color="accent">Log In</button>
+                  </div>
+                  
+            </form>
+    
+        </div>
+        
+    </div>
+</div>
