@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  serverUrl = "http://127.0.0.1:8000/";
+  // serverUrl = "http://127.0.0.1:8000/";
+  private serverUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
