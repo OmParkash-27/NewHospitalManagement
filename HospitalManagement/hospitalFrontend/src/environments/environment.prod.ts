@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: '' // Example for production API
+    apiUrl: 'https://newhospitalmanagement-5.onrender.com/' // Example for production API
   };
   
