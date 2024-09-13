@@ -60,7 +60,7 @@ export class AddEditADRComponent {
   BackToList() {
     this.formObj = {};
     this.dialog.closeAll();
-    this.route.navigate(['dashboard']);
+    this.route.navigate(['/dashboard']);
   }
 
   fetchRecord(id: string) {
