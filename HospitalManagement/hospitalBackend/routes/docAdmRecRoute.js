@@ -11,6 +11,7 @@ router.post('/dARApiLogin', dARC.login);
 router.post('/dARApi', dARC.saveData);
 
 router.get('/dARApi', dARC.fetchAllDAR);
+router.get('/dashboard', dARC.fetchAllDAR);
 
 router.get('/dARApi/doctors', dARC.fetchDoctors);
 
