@@ -11,12 +11,12 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname,'dist/hospital-frontend')));
-// Catch-all route to send index.html for unknown paths
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'dist/hospital-frontend/index.html'));
-//   });
 app.use(patientRouter);
 app.use(dARRouter);
+// Catch-all route to send index.html for unknown paths
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/hospital-frontend/index.html'));
+  });
 
 app.listen(port, ()=> {
     console.log("server running on port no. ",port);
